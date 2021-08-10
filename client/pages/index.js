@@ -24,7 +24,7 @@ const Home = () => {
   const onChange = (e) => {
     let search = e.target.value;
     if (search.trim() === '' && filteredFlag === 0) return setFilteredMenu(menu);
-    else if (search.trim() !== '' && filteredFlag === 1) {
+    else if (filteredFlag === 1) {
       if (filteredMenu.length !== 0) {
         const filteredMenuByIngredient = menu.filter( (element) => {
           if(element.ingredients.includes(filteredIngredient)) return element;
@@ -36,7 +36,7 @@ const Home = () => {
       } 
     }
     else {
-      let filteredTitle = filteredMenu.filter( (element) => {
+      let filteredTitle = menu.filter( (element) => {
         if (element.title.toLowerCase().includes(search.toLowerCase())) return element;
       })
       setFilteredMenu(filteredTitle);
